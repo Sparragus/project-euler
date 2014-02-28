@@ -35,20 +35,20 @@ treeString = '''
 '''
 
 t = map(int, treeString.strip().replace("\n", " ").split(" "))
-maxAtNode = [-1] * len(t)
+cache = [-1] * len(t)
 
 def getMaxPath(tree, startNode):
-  if maxAtNode[startNode] >= 0:
-    return maxAtNode[startNode]
+  if cache[startNode] >= 0:
+    return cache[startNode]
 
   try:
     l = getMaxPath(tree, left(tree, startNode))
     r = getMaxPath(tree, right(tree, startNode))
   except IndexError:
-    maxAtNode[startNode] = tree[startNode]
+    cache[startNode] = tree[startNode]
     return tree[startNode]
 
-  maxAtNode[startNode] = tree[startNode] + max(l,r)
+  cache[startNode] = tree[startNode] + max(l,r)
   return tree[startNode] + max(l,r)
 
 print getMaxPath(t,0)

@@ -21,7 +21,5 @@ def getPrimeFactors(n):
     primes.append(getPrimeFactors(n/i))
     return primes
 
-
 if __name__ == "__main__":
-  primesFactors = getPrimeFactors(600851475143)
-  print primesFactors
+  print  getPrimeFactors(600851475143)
